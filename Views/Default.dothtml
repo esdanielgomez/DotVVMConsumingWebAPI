@@ -1,0 +1,28 @@
+﻿@viewModel DotVVM_APIConsume.ViewModels.DefaultViewModel, DotVVM_APIConsume
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+	<div class="page-center">
+		<div class="page-grid-top">
+		<div class="student-image"></div>
+			<h1>User List</h1>
+			
+				<dot:RouteLink Text="New User" RouteName="CRUD_Create" class="page-button btn-add btn-long"/>
+			
+		</div>
+		<dot:GridView DataSource="{value: Users}" class="page-grid">
+			<Columns>
+				<dot:GridViewTextColumn ValueBinding="{value: FirstName}" HeaderText="Firstname" />
+				<dot:GridViewTextColumn ValueBinding="{value: LastName}" HeaderText="Lastname" />
+				<dot:GridViewTemplateColumn>
+					<dot:RouteLink Text="Detail" RouteName="CRUD_Detail" Param-Id="{{value: Id}}" />
+				</dot:GridViewTemplateColumn>
+				<dot:GridViewTemplateColumn>
+					<dot:RouteLink Text="Edit" RouteName="CRUD_Edit" Param-Id="{{value: Id}}" />
+				</dot:GridViewTemplateColumn>
+			</Columns>
+			 <EmptyDataTemplate>
+                There are no registered users. 
+            </EmptyDataTemplate>
+		</dot:GridView>
+	</div>
+</dot:Content>
